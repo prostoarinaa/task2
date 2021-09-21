@@ -16,7 +16,15 @@ public:
     string ClearPhrase1(string OldPhrase)
     {
         vector <char> New = {};
+        int k =0;
         for (int i = 0; i < OldPhrase.length(); i++) {
+            if (k >= 0){
+                if (OldPhrase[i] != 'q') k++;
+                    else k--;
+            }
+        }
+        if (k>0) {
+            for (int i = 0; i < OldPhrase.length(); i++) {
             if (OldPhrase[i] != 'q')
                 New.push_back(OldPhrase[i]);
             else
@@ -26,7 +34,9 @@ public:
         for (int i = 0; i < New.size(); i++) {
             OldPhrase += New[i];
         }
-        return OldPhrase;
+         return OldPhrase;
+        }
+        else return "error";
     };
 
     void Cout()
