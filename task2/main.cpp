@@ -5,6 +5,7 @@
 */
 
 #include <iostream>
+#include <vector>
 
 using namespace std;
 class Phrase {
@@ -14,12 +15,17 @@ public:
 
     string ClearPhrase1(string OldPhrase)
     {
+        vector <char> New = {};
         for (int i = 0; i < OldPhrase.length(); i++) {
-            if (OldPhrase[i] == '1') {
-                OldPhrase.erase(i, 1); i--;
-                OldPhrase.erase(i, 1);
+            if (OldPhrase[i] != 'q')
+                New.push_back(OldPhrase[i]);
+            else
+                New.pop_back();
             }
-            }
+        OldPhrase = "";
+        for (int i = 0; i < New.size(); i++) {
+            OldPhrase += New[i];
+        }
         return OldPhrase;
     };
 
@@ -29,7 +35,7 @@ public:
             cout << NewPhrase[i];
         }
         cout << endl;
-    }
+    };
 };
 
 int main() {
